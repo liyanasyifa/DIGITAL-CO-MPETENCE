@@ -137,10 +137,9 @@ int main()
             break;
     }
 
-    // -----------------------------
-    // Anis's Part
     // SONG/PLAYLIST DATA
-    // -----------------------------
+    // Anis's Part
+    // Songs using user's input
     vector<string> recommendations;
 
     if (mood == "Happy" && genre == "Pop") {
@@ -187,6 +186,8 @@ int main()
     cout << "Genre : " << genre << endl;
 
     // Display recommendations
+    //Anis's Part
+    //User's Recommendation without using any input
     vector<Song> recommendations = getRecommendations(mood, genre);
 
     if (!recommendations.empty()) {
@@ -199,7 +200,8 @@ int main()
         }
     }
 
-     cout << endl;
+    //End of Program
+    cout << endl;
     cout << "Thank you for using Spotify Music Recommender!"
          << endl;
 
