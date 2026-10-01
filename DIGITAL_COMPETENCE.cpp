@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
 int main()
@@ -25,8 +27,25 @@ int main()
     // Validate main menu choice
     while (moodChoice < 1 || moodChoice > 2)
     {
-        cout << "Invalid choice. Please enter 1 or 2: ";
-        cin >> moodChoice;
+        cout << "Enter your choice: ";
+
+        // Error Handling (Invalid Input)/Anis
+        if (cin >> moodChoice) {
+            if (menuChoice >= 1 && menuChoice <= 2) {
+                break;
+            }
+            else {
+                 cout << "Invalid choice. Please enter 1 or 2: ";
+                 << endl;
+            }
+        }
+        else {
+            cout << "Invalid input. Please enter a number."
+                 << endl;
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     }
 
     // Exit program
@@ -106,11 +125,11 @@ int main()
             break;
 
         case 2:
-            genre = "K-Pop";
+            genre = "R&B";
             break;
 
         case 3:
-            genre = "R&B";
+            genre = "K-Pop";
             break;
 
         case 4:
@@ -118,12 +137,71 @@ int main()
             break;
     }
 
+    // -----------------------------
+    // Anis's Part
+    // SONG/PLAYLIST DATA
+    // -----------------------------
+    vector<string> recommendations;
+
+    if (mood == "Happy" && genre == "Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Happy" && genre == "R&B") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Happy" && genre == "K-Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Happy" && genre == "Rock") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Sad" && genre == "Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Sad" && genre == "R&B") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Sad" && genre == "K-Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Sad" && genre == "Rock") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Chill" && genre == "Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Chill" && genre == "R&B") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Chill" && genre == "K-Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Chill" && genre == "Rock") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Energetic" && genre == "Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Energetic" && genre == "R&B") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Energetic" && genre == "K-Pop") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else if (mood == "Energetic" && genre == "Rock") {
+        recommendations = {" Song 1", " Song 2", " Song 3"};
+    } else {
+        cout << "No recommendations available for the selected mood and genre." << endl;
+        return 0;
+    }
+    
     // Display selected choices
     cout << endl;
     cout << "You selected:" << endl;
     cout << "Mood  : " << mood << endl;
     cout << "Genre : " << genre << endl;
 
+    // Display recommendations
+    vector<Song> recommendations = getRecommendations(mood, genre);
+
+    if (!recommendations.empty()) {
+       cout << endl;
+       cout << "Recommended Songs:" << endl;
+
+        for (const auto& song : recommendations) {
+            cout << "- " << song.title
+                 << " by " << song.artist << endl;
+        }
+    }
+
+     cout << endl;
+    cout << "Thank you for using Spotify Music Recommender!"
+         << endl;
 
     return 0;
 }
