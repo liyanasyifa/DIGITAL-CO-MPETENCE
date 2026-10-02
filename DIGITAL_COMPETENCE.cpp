@@ -216,8 +216,6 @@ int main()
     // Display recommendations
     //Anis's Part
     //User's Recommendation without using any input
-    vector<Song> recommendations = getRecommendations(mood, genre);
-
     if (!recommendations.empty()) {
         cout << "\nPress Enter to view your recommendations";
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -226,8 +224,7 @@ int main()
         cout << "Recommended Songs:" << endl;
 
         for (const auto& song : recommendations) {
-            cout << "- " << song.title
-                 << " by " << song.artist << endl;
+            cout << "- " << song << endl;
         }
     }
 
