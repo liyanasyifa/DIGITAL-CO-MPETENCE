@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <limits>
 using namespace std;
 
 int main()
@@ -27,25 +28,24 @@ int main()
     // Validate main menu choice
     while (moodChoice < 1 || moodChoice > 2)
     {
-        cout << "Enter your choice: ";
-
         // Error Handling (Invalid Input)/Anis
+        while (true) {
+            cout << "Enter your choice: ";
         if (cin >> moodChoice) {
-            if (menuChoice >= 1 && menuChoice <= 2) {
-                break;
+            if (moodChoice >= 1 && moodChoice <= 2) {
+                break;  // Valid input (1 or 2), exit the loop
             }
             else {
-                 cout << "Invalid choice. Please enter 1 or 2: ";
-                 << endl;
+                 cout << "Invalid choice. Please enter 1 or 2: \n" << endl;
             }
         }
         else {
-            cout << "Invalid input. Please enter a number."
-                 << endl;
+            cout << "Invalid input. Please enter a number.\n" << endl;
 
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
+    }
     }
 
     // Exit program
@@ -70,9 +70,24 @@ int main()
     // Validate mood choice
     while (moodChoice < 1 || moodChoice > 4)
     {
-        cout << "Invalid choice. Please enter a number from 1 to 4: ";
-        cin >> moodChoice;
-    }
+        // Error Handling (Invalid Input)/Anis
+       while (true) {
+             cout << "Enter your choice: ";
+          if (cin >> moodChoice) {
+             if (moodChoice >= 1 && moodChoice <= 4) {
+                break; // Valid input, exit loop
+             }
+             else {
+                 cout << "Invalid choice. Please enter a number from 1 to 4:\n ";
+             }
+         }
+         else {
+             cout << "Invalid input. Please enter a number.\n ";
+             cin.clear();
+             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+         }
+     }
+ }
 
     // -----------------------------
     // GENRE SELECTION
@@ -89,8 +104,21 @@ int main()
     // Validate genre choice
     while (genreChoice < 1 || genreChoice > 4)
     {
+        // Error Handling (Invalid Input)/Anis
+        while (true) {
+            cout << "Enter your choice: ";
+            if (cin >> genreChoice) {
+        if (genreChoice >= 1 && genreChoice <= 4) {
+            break; // Valid input (1-4), exit loop
+        } else {
         cout << "Invalid choice. Please enter a number from 1 to 4: ";
-        cin >> genreChoice;
+        }
+    } else {
+        cout << "Invalid input. Please enter a number.\n ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+}
     }
 
     // -----------------------------
@@ -143,37 +171,37 @@ int main()
     vector<string> recommendations;
 
     if (mood == "Happy" && genre == "Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Happy\" by Pharrel Williams", "\"Shake It Off\" by Taylor Swift", "\"Can't Stop the Feeling!\" by Justin Timberlake"};
     } else if (mood == "Happy" && genre == "R&B") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Leave The Door Open\" by Silk Sonic", "\"Watermelon Sugar\" by Harry Styles", "\"Good Days\" by SZA"};
     } else if (mood == "Happy" && genre == "K-Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Dynamite\" by BTS", "\"How You Like That\" by BLACKPINK", "\"Dance The Night Away\" by TWICE"};
     } else if (mood == "Happy" && genre == "Rock") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Don't Stop Me Now\" by Queen", "\"On Top of the World\" by Imagine Dragons", "\"Adventure of a Lifetime\" by Coldplay"};
     } else if (mood == "Sad" && genre == "Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"ghostin\" by Ariana Grande", "\"Traitor\" by Olivia Rodrigo", "\"When We Were Young\" by Adele"};
     } else if (mood == "Sad" && genre == "R&B") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Stay\" by The Kid LAROI & Justin Bieber", "\"Heartbreak Anniversary\" by Giveon", "\"Call Out My Name\" by The Weeknd"};
     } else if (mood == "Sad" && genre == "K-Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Breathe(숨)\" by Lee Hi", "\"How Can I Love the Heartbreak, You're the One I Love\" by AKMU", "\"Fine\" by Taeyeon"};
     } else if (mood == "Sad" && genre == "Rock") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+       recommendations = {"\"Black\" by Pearl Jam", "\"Snuff\" by Slipknot", "\"Asleep\" by The Smiths"}; 
     } else if (mood == "Chill" && genre == "Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Paris in the Rain\" by Lauv", "\"Pink + White\" by Frank Ocean", "\"Sunflower\" by Post Malone & Swae Lee"};
     } else if (mood == "Chill" && genre == "R&B") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Snooze\" by SZA", "\"Get You\" by Daniel Caesar feat. Kali Uchis", "\"PRIDE.\" by Steve Lacy / Kendrick Lamar"};
     } else if (mood == "Chill" && genre == "K-Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Through the Night(밤편지)\" by IU", "\"Ditto\" by NewJeans", "\"UN Village\" by Baekhyun"};
     } else if (mood == "Chill" && genre == "Rock") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Chamber of Reflection\" by Mac DeMarco", "\"Yellow\" by Coldplay", "\"Gravity\" by John Mayer"};
     } else if (mood == "Energetic" && genre == "Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Levitating\" by Dua Lipa", "\"Blinding Lights\" by The Weeknd", "\"Uptown Funk\" by Mark Ronson feat. Bruno Mars"};
     } else if (mood == "Energetic" && genre == "R&B") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Yeah!\" by Usher feat. Lil Jon & Ludacris", "\"24K Magic\" by Bruno Mars", "\"Fine China\" by Chris Brown"};
     } else if (mood == "Energetic" && genre == "K-Pop") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"MIC Drop(Steve Aoki Remix)\" by BTS", "\"Kill This Love\" by BLACKPINK", "\"VERY NICE(아주 NICE)\" by SEVENTEEN"};
     } else if (mood == "Energetic" && genre == "Rock") {
-        recommendations = {" Song 1", " Song 2", " Song 3"};
+        recommendations = {"\"Misery Business\" by Paramore", "\"Mr. Brightside\" by The Killers", "\"Guerrilla Radio\" by Rage Against The Machine"};
     } else {
         cout << "No recommendations available for the selected mood and genre." << endl;
         return 0;
@@ -191,8 +219,11 @@ int main()
     vector<Song> recommendations = getRecommendations(mood, genre);
 
     if (!recommendations.empty()) {
-       cout << endl;
-       cout << "Recommended Songs:" << endl;
+        cout << "\nPress Enter to view your recommendations";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.get();
+        cout << endl;
+        cout << "Recommended Songs:" << endl;
 
         for (const auto& song : recommendations) {
             cout << "- " << song.title
